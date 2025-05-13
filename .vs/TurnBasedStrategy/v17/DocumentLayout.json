@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{C5025B79-C4E9-1845-47F1-1DF500307A1D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C5025B79-C4E9-1845-47F1-1DF500307A1D}|Assembly-CSharp.csproj|c:\\tactical-based\\turnbasedstrategy\\assets\\scripts\\mouseworld.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C5025B79-C4E9-1845-47F1-1DF500307A1D}|Assembly-CSharp.csproj|C:\\tactical-based\\TurnBasedStrategy\\assets\\scripts\\mouseworld.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C5025B79-C4E9-1845-47F1-1DF500307A1D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\mouseworld.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -30,8 +30,7 @@
               "RelativeToolTip": "Assets\\Scripts\\MouseWorld.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T11:31:53.363Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-13T11:31:53.363Z"
             },
             {
               "$type": "Document",
@@ -41,7 +40,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Unit.cs",
               "ToolTip": "C:\\tactical-based\\TurnBasedStrategy\\Assets\\Scripts\\Unit.cs",
               "RelativeToolTip": "Assets\\Scripts\\Unit.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-13T11:26:52.142Z",
               "EditorCaption": ""

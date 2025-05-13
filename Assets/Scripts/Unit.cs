@@ -5,7 +5,12 @@ public class Unit : MonoBehaviour
 
     [SerializeField]private Animator unitAnimator;
     private Vector3 targetPosition;
-    
+
+
+    void Awake()
+    {
+        targetPosition = transform.position;
+    }
     private void Update()
     {
         
@@ -14,19 +19,22 @@ public class Unit : MonoBehaviour
         {
             unitAnimator.SetBool("isWalking", true);
             Vector3 moveDirection = (targetPosition - transform.position).normalized;
+
+           
             // movement is not dependent on framerate since we multiply with Time.deltaTime
             float moveSpeed = 4f;
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
-        }else{
+
+            float turnSpeed = 10f;
+            transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * turnSpeed);
+        }
+        else{
             unitAnimator.SetBool("isWalking",false);
         }
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            Move(MouseWorld.GetMouseWorldPosition());
-        }
+       
     }
-    private void Move(Vector3 targetPosition)
+    public void Move(Vector3 targetPosition)
     {
         this.targetPosition = targetPosition;
     }
