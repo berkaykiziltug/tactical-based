@@ -20,6 +20,8 @@ public class GridSystem
             for (int z = 0; z < height; z++)
             {
                 GridPosition gridPosition = new GridPosition(x, z);
+                
+                //for every grid position create a grid object. This will hold information on the grid positions. Also dont have to loop through again since it is already inside this loop.
                 gridObjectArray[x,z] = new GridObject(this,gridPosition);
             }
         }
@@ -43,9 +45,9 @@ public class GridSystem
         for (int x = 0; x < width; x++)
         {
             for (int z = 0; z < height; z++)
-            {
-                GridPosition gridPosition = new GridPosition(x, z);
-               Transform debugTransform = GameObject.Instantiate(debugPrefab, GetWorldPosition(gridPosition), Quaternion.identity);
+            { 
+              GridPosition gridPosition = new GridPosition(x, z);
+              Transform debugTransform = GameObject.Instantiate(debugPrefab, GetWorldPosition(gridPosition), Quaternion.identity);
               GridDebugObject gridDebugObject = debugTransform.GetComponent<GridDebugObject>();
               gridDebugObject.SetGridObject(GetGridObject(gridPosition));
             }
