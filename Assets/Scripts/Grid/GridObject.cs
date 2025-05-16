@@ -38,4 +38,9 @@ public class GridObject
     {
         unitList.Add(unit);
     }
+
+    public bool HasAnyUnit()
+    {
+        return unitList.Count > 0;
+    }
 }

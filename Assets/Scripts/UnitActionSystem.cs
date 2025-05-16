@@ -26,7 +26,13 @@ public class UnitActionSystem : MonoBehaviour
          { 
              //check if you can select the unit. If yes then just return until next mouse click so we don't have the character move instantly after selecting the unit.
              if(TryHandleUnitSelection()) return;
-             selectedUnit.Move(MouseWorld.GetMouseWorldPosition());
+             
+             GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetMouseWorldPosition());
+             if (selectedUnit.GetMoveAction().IsValidActionGridPosition(mouseGridPosition))
+             {
+                 selectedUnit.GetMoveAction().Move(mouseGridPosition);
+             }
+             
          }
     }
 

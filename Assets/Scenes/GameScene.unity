@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cinemachineCamera: {fileID: 1268225722}
-  offset: {fileID: 1268225721}
+  cinemachineFollow: {fileID: 1268225721}
 --- !u!1 &1268225720
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,7 +744,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2166375163248097197, guid: b67f85bb9cf2176429f29b6c626ff365, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2166375163248097197, guid: b67f85bb9cf2176429f29b6c626ff365, type: 3}
       propertyPath: m_LocalPosition.y
@@ -752,7 +752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2166375163248097197, guid: b67f85bb9cf2176429f29b6c626ff365, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2166375163248097197, guid: b67f85bb9cf2176429f29b6c626ff365, type: 3}
       propertyPath: m_LocalRotation.w
@@ -929,6 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1536801de0ee7941a8141d15873af95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unit: {fileID: 375461468}
 --- !u!4 &1543800330
 Transform:
   m_ObjectHideFlags: 0
