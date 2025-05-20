@@ -931,9 +931,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 4.6890464, y: 8.1688385, z: -9.389751}
+    m_Target: {x: 4.4133167, y: 0.71218556, z: 1.7857857}
     speed: 2
-    m_Value: {x: 4.6890464, y: 8.1688385, z: -9.389751}
+    m_Value: {x: 4.4133167, y: 0.71218556, z: 1.7857857}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -979,13 +979,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.3811166, y: -0.23582456, z: 0.10117078, w: 0.88823444}
+    m_Target: {x: 0.32536262, y: -0.46559516, z: 0.18909644, w: 0.8010382}
     speed: 2
-    m_Value: {x: -0.3811166, y: 0.23582456, z: -0.10117078, w: -0.88823444}
+    m_Value: {x: -0.32536262, y: 0.46559513, z: -0.18909644, w: -0.8010382}
   m_Size:
-    m_Target: 1.9517956
+    m_Target: 2.1314096
     speed: 2
-    m_Value: 1.9517956
+    m_Value: 2.1314096
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1165,7 +1165,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -8262
+  m_LastSelectedObjectID: -1542
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1278,7 +1278,8 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders: []
+    m_Folders:
+    - Assets/Prefabs
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1296,7 +1297,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 98330100
     m_LastClickedID: 78744
-    m_ExpandedIDs: 00000000bcae0000beae0000c0ae0000c2ae0000c4ae0000c6ae0000c8ae0000caae0000ccae0000ceae0000d0ae0000d2ae0000d4ae0000d6ae0000d8ae0000daae0000
+    m_ExpandedIDs: 00000000c8ae0000caae0000ccae0000ceae0000d0ae0000d2ae0000d4ae0000d6ae0000d8ae0000daae0000dcae0000deae0000e0ae0000e2ae0000e4ae0000e6ae0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1325,7 +1326,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000bcae0000beae0000c0ae0000c2ae0000c4ae0000c6ae0000c8ae0000caae0000ccae0000ceae0000d0ae0000d2ae0000d4ae0000d6ae0000d8ae0000daae0000
+    m_ExpandedIDs: 00000000c8ae0000caae0000ccae0000ceae0000d0ae0000d2ae0000d4ae0000d6ae0000d8ae0000daae0000dcae0000deae0000e0ae0000e2ae0000e4ae0000e6ae0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1420,7 +1421,7 @@ MonoBehaviour:
     m_ContainerData: []
     m_OverlaysVisible: 1
   m_ObjectsLockedBeforeSerialization: []
-  m_InstanceIDsLockedBeforeSerialization: 4016ffff
+  m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
     m_CachedPref: 331
     m_ControlHash: -371814159
