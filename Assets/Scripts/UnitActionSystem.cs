@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UnitActionSystem : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class UnitActionSystem : MonoBehaviour
    [SerializeField] private Unit selectedUnit;
    [SerializeField] private LayerMask unitLayerMask;
 
+   private BaseAction selectedAction;
    private bool isBusy;
 
    private void Awake()
@@ -22,28 +24,29 @@ public class UnitActionSystem : MonoBehaviour
        }
    }
 
+   private void Start()
+   {
+       SetSelectedUnit(selectedUnit);
+   }
+
    void Update()
    {
-       if (isBusy) return;
-         if (Input.GetMouseButtonDown(0))
-         { 
-             //check if you can select the unit. If yes then just return until next mouse click so we don't have the character move instantly after selecting the unit.
-             if(TryHandleUnitSelection()) return;
-             
-             GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetMouseWorldPosition());
-             if (selectedUnit.GetMoveAction().IsValidActionGridPosition(mouseGridPosition))
-             {
-                 SetBusy();
-                 selectedUnit.GetMoveAction().Move(mouseGridPosition, ClearBusy);
-             }
-             
-         }
+       if (isBusy)
+       {
+           return;
+       }
 
-         if (Input.GetMouseButtonDown(1))
-         {
-             SetBusy();
-             selectedUnit.GetSpinAction().Spin(ClearBusy);
-         }
+       if (EventSystem.current.IsPointerOverGameObject())
+       {
+           return;
+       }
+       //check if you can select the unit. If yes then just return until next mouse click so we don't have the character move instantly after selecting the unit.
+       if(TryHandleUnitSelection())
+       {
+           return;
+       }
+       HandleSelectedAction();
+         
    }
 
    private void SetBusy()
@@ -56,28 +59,63 @@ public class UnitActionSystem : MonoBehaviour
        isBusy = false;
    }
 
-   private bool TryHandleUnitSelection(){ 
-       //Fire a ray from camera's position towards the mouse position. Simple. Then I store the ray.
-       Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
-       if(Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, unitLayerMask)){ 
-           if(raycastHit.transform.TryGetComponent<Unit>(out Unit unitComponent))
+   private bool TryHandleUnitSelection(){
+       if (Input.GetMouseButtonDown(0))
+       {
+           //Fire a ray from camera's position towards the mouse position. Simple. Then I store the ray.
+           Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+           if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, unitLayerMask))
            {
-               //Invoking the event inside this method.
-               SetSelectedUnit(unitComponent);
-               return true;
+               if (raycastHit.transform.TryGetComponent<Unit>(out Unit unitComponent))
+               {
+                   if (unitComponent == selectedUnit)
+                   {
+                       return false;
+                   }
+                   //Invoking the event inside this method.
+                   SetSelectedUnit(unitComponent);
+                   return true;
+               }
            }
        }
+
        return false;
    }
 
    private void SetSelectedUnit(Unit unit)
    {
        selectedUnit = unit;
+       SetSelectedAction(unit.GetMoveAction()); 
        OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
+   }
+
+   public void SetSelectedAction(BaseAction baseAction)
+   {
+       selectedAction = baseAction;
    }
 
    public Unit GetSelectedUnit()
    {
        return selectedUnit;
+       
+   }
+
+   private void HandleSelectedAction()
+   {
+       if (Input.GetMouseButtonDown(0))
+       {
+           GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetMouseWorldPosition());
+           
+           if (selectedAction.IsValidActionGridPosition(mouseGridPosition))
+           {
+               SetBusy();
+               selectedAction.TakeAction(mouseGridPosition,ClearBusy);
+           }
+       }
+   }
+
+   public BaseAction GetSelectedAction()
+   {
+       return selectedAction;
    }
 }
