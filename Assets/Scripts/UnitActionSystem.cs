@@ -40,6 +40,11 @@ public class UnitActionSystem : MonoBehaviour
            return;
        }
 
+       if (!TurnSystem.Instance.IsPlayerTurn())
+       {
+           return;
+       }
+
        if (EventSystem.current.IsPointerOverGameObject())
        {
            return;
@@ -76,6 +81,12 @@ public class UnitActionSystem : MonoBehaviour
                {
                    if (unitComponent == selectedUnit)
                    {
+                       return false;
+                   }
+
+                   if (unitComponent.IsEnemy())
+                   {
+                       //Clicked on an enemy.
                        return false;
                    }
                    //Invoking the event inside this method.
