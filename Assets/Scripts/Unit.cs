@@ -10,10 +10,7 @@ public class Unit : MonoBehaviour
     public static event EventHandler OnAnyUnitDead;
 
     [SerializeField] private bool isEnemy;
-    private MoveAction moveAction;
     private HealthSystem healthSystem;
-    private SpinAction spinAction;
-    private ShootAction shootAction;
     private GridPosition gridPosition;
     private BaseAction[] baseActionArray;
     private int actionPoints = ACTION_POINTS_MAX; 
@@ -21,9 +18,6 @@ public class Unit : MonoBehaviour
     void Awake()
     {
         healthSystem = GetComponent<HealthSystem>();
-        moveAction = GetComponent<MoveAction>();
-        spinAction = GetComponent<SpinAction>();
-        shootAction = GetComponent<ShootAction>();
         //basically gets all the components that are base action.
         baseActionArray = GetComponents<BaseAction>();
     }
@@ -101,15 +95,18 @@ public class Unit : MonoBehaviour
         OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    public MoveAction GetMoveAction()
+    public T GetAction<T>() where T : BaseAction
     {
-        return moveAction;
+        foreach (BaseAction baseAction in baseActionArray)
+        {
+            if (baseAction is T)
+            {
+                return (T)baseAction;
+            }
+        }
+        return null;
     }
-    public SpinAction GetSpinAction()
-    {
-        return spinAction;
-    }
-
+    
     public GridPosition GetGridPosition()
     {
         return gridPosition;
@@ -138,11 +135,6 @@ public class Unit : MonoBehaviour
     public Vector3 GetWorldPosition()
     {
         return transform.position;
-    }
-
-    public ShootAction GetShootAction()
-    {
-        return shootAction;
     }
 
     public float GetHealthNormalized()
