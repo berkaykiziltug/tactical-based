@@ -1,15 +1,19 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public class Pathfinding : MonoBehaviour
 {
+    
+    
     public static Pathfinding Instance { get; private set; } 
 
     private const int MOVE_STRAIGHT_COST = 10;
     private const int MOVE_DIAGONAL_COST = 14;
     
-    
+    [SerializeField] private LayerMask obstaclesLayerMask;
     [SerializeField] private Transform gridDebugObjectPrefab;
     private int width;
     private int height;
@@ -25,8 +29,31 @@ public class Pathfinding : MonoBehaviour
         {
             Instance = this;
         }
-        gridSystem = new GridSystem<PathNode>(10, 10, 2, (GridSystem<PathNode> g, GridPosition gridPosition) => new PathNode(gridPosition));
+       
+    }
+
+    public void Setup(int width, int height, float cellSize)
+    {
+        this.width = width;
+        this.height = height;
+        this.cellSize = cellSize;
+        gridSystem = new GridSystem<PathNode>(width, height, cellSize, (GridSystem<PathNode> g, GridPosition gridPosition) => new PathNode(gridPosition));
         gridSystem.CreateDebugObjects(gridDebugObjectPrefab);
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int z = 0; z < height; z++)
+            {
+                GridPosition gridPosition = new GridPosition(x, z);
+                Vector3 worldPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
+                float raycastOffsetDistance = 5f;
+                if (Physics.Raycast(worldPosition + Vector3.down * raycastOffsetDistance, Vector3.up,
+                        raycastOffsetDistance * 2, obstaclesLayerMask))
+                {
+                    GetNode(x,z).SetIsWalkable(false);
+                }
+            }
+        }
     }
 
     public List<GridPosition> FindPath(GridPosition startGridPosition, GridPosition endGridPosition)
@@ -77,6 +104,13 @@ public class Pathfinding : MonoBehaviour
                 {
                     continue;
                 }
+
+                if (!neighbourNode.IsWalkable())
+                {
+                  closedList.Add(neighbourNode);
+                  continue;
+                }
+                
                 int tentativeGCost = currentNode.GetGCost() + CalculateDistance(currentNode.GetGridPosition(), neighbourNode.GetGridPosition());
                 if (tentativeGCost < neighbourNode.GetGCost())
                 {

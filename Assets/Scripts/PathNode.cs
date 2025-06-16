@@ -7,6 +7,7 @@ public class PathNode
     private int hCost;
     private int fCost;
 
+    private bool isWalkable = true;
     private PathNode cameFromPathNode;
 
 
@@ -70,4 +71,13 @@ public class PathNode
         return cameFromPathNode;
     }
 
+    public bool IsWalkable()
+    {
+        return isWalkable;
+    }
+
+    public void SetIsWalkable(bool isWalkable)
+    {
+        this.isWalkable = isWalkable;
+    }
 }
