@@ -8,12 +8,13 @@ public class PathNode
     private int fCost;
 
     private PathNode cameFromPathNode;
-    
-    
+
+
     public PathNode(GridPosition gridPosion)
     {
         this.gridPosition = gridPosion;
     }
+
     public override string ToString()
     {
         return gridPosition.ToString();
@@ -23,12 +24,50 @@ public class PathNode
     {
         return gCost;
     }
+
     public int GetFCost()
     {
         return fCost;
     }
+
     public int GetHCost()
     {
         return hCost;
     }
+
+    public void SetGCost(int gCost)
+    {
+        this.gCost = gCost;
+    }
+
+    public void SetHCost(int hCost)
+    {
+        this.hCost = hCost;
+    }
+
+    public void CalculateFCost()
+    {
+        fCost = gCost + hCost;
+    }
+
+    public void ResetCameFromPathNode()
+    {
+        cameFromPathNode = null;
+    }
+
+    public void SetCameFromPathNode(PathNode pathNode)
+    {
+        cameFromPathNode = pathNode;
+    }
+
+    public GridPosition GetGridPosition()
+    {
+        return gridPosition;
+    }
+
+    public PathNode GetCameFromPathNode()
+    {
+        return cameFromPathNode;
+    }
+
 }
