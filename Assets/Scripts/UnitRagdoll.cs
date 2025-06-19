@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 
 public class UnitRagdoll : MonoBehaviour
 {
@@ -8,7 +10,8 @@ public class UnitRagdoll : MonoBehaviour
     public void Setup(Transform originalRootBone)
     {
         MatchAllChildTransform(originalRootBone, ragdollRootBone);
-        ApplyExplosionToRagdoll(ragdollRootBone, 600f, transform.position, 10f);
+        Vector3 randomDir = new Vector3(Random.Range(-1f, +1f), 0, Random.Range(-1f, +1f));
+        ApplyExplosionToRagdoll(ragdollRootBone, 600f, transform.position + randomDir, 10f);
     }
 
     private void MatchAllChildTransform(Transform root, Transform clone)
