@@ -1,0 +1,41 @@
+[33mb350f46[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m add destructible crate and pathfinding updater
+[33me7155f1[m add shoot action camera shake
+[33m4b30769[m add shooting and moving with pathfinding logic
+[33me3a8cd3[m add level design
+[33mc24881b[m  add pathfinding obstacles
+[33mc059a3d[m implement pathfinding
+[33mcb3b49f[m  add base pathfinding logic without implementation
+[33m4648856[m change grid system to work with generics
+[33macf9a5a[m Update .gitignore to ignore UserSettings/
+[33m56a96a0[m Stop tracking local Unity layout file
+[33mf8edfa3[m add complex AI logic
+[33m4a00a95[m  add basic enemy AI
+[33m8cfdd1e[m  add grid visual colors based on actions and player range
+[33m0f0f83c[m scene save with no remarkable changes
+[33m84fa663[m add shooting action camera
+[33m124d70b[m add ragdoll and health ui
+[33m6b723f1[m add basic health system
+[33mc4d497e[m add bullet mechanics
+[33mb2b92d0[m  add shoot action
+[33m2c5df68[m add basic enemy
+[33m5731e28[m add turn sytem
+[33mf22473d[m add action point system
+[33mf12b738[m add action busy logic
+[33m76eab02[m add generic take action logic
+[33m62e482a[m  add actions ui
+[33ma0875ad[m add action system with simple move and spin action and validations
+[33m7659c0f[m  add grid movement logic and grid validation system
+[33m50f0975[m add camera controller
+[33m13b4afd[m  add cinemachine and camera controls
+[33maab2d19[m  Add level grid and movement logic
+[33mccfa602[m add basic grid system
+[33m8f48f41[m add selected unit logic and visual
+[33m48fa16a[m add unit selection
+[33me343cf6[m  set up animations
+[33m4703528[m add movement with mouse click
+[33m3dc204a[m add mouse raycast and its hit layer
+[33m3e1484b[m add basic unit movement
+[33m88ea908[m add post process effects and import the models package
+[33m1cc2a9e[m Merge branch 'main' of https://github.com/berkaykiziltug/tactical-based
+[33m53b3f98[m initial commit
+[33m3329063[m Initial commit
