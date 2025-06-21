@@ -20,14 +20,14 @@ public class Door : MonoBehaviour
     {
         gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         LevelGrid.Instance.SetDoorAtGridPosition(gridPosition, this);
-        // if (isOpen)
-        // {
-        //     OpenDoor();
-        // }
-        // else
-        // {
-        //     CloseDoor();
-        // }
+        if (isOpen)
+        {
+            OpenDoor();
+        }
+        else
+        {
+            CloseDoor();
+        }
 }
 
     private void Update()
