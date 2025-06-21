@@ -94,7 +94,6 @@ public class ShootAction : BaseAction
                 break;
         }
 
-        
     }
 
     public override string GetActionName()
