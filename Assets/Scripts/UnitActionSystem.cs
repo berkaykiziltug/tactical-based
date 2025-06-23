@@ -71,29 +71,30 @@ public class UnitActionSystem : MonoBehaviour
    }
 
    private bool TryHandleUnitSelection(){
-       if (Input.GetMouseButtonDown(0))
-       {
-           //Fire a ray from camera's position towards the mouse position. Simple. Then I store the ray.
-           Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-           if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, unitLayerMask))
-           {
-               if (raycastHit.transform.TryGetComponent<Unit>(out Unit unitComponent))
+       if (InputManager.Instance.IsMouseButtonDown())
+       { 
+               //Fire a ray from camera's position towards the mouse position. Simple. Then I store the ray.
+               Ray ray = Camera.main.ScreenPointToRay(InputManager.Instance.GetMouseScreenPosition());
+               if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, unitLayerMask))
                {
-                   if (unitComponent == selectedUnit)
+                   if (raycastHit.transform.TryGetComponent<Unit>(out Unit unitComponent))
                    {
-                       return false;
-                   }
+                       if (unitComponent == selectedUnit)
+                       {
+                           return false;
+                       }
 
-                   if (unitComponent.IsEnemy())
-                   {
-                       //Clicked on an enemy.
-                       return false;
+                       if (unitComponent.IsEnemy())
+                       {
+                           //Clicked on an enemy.
+                           return false;
+                       }
+
+                       //Invoking the event inside this method.
+                       SetSelectedUnit(unitComponent);
+                       return true;
                    }
-                   //Invoking the event inside this method.
-                   SetSelectedUnit(unitComponent);
-                   return true;
                }
-           }
        }
 
        return false;
@@ -121,7 +122,7 @@ public class UnitActionSystem : MonoBehaviour
 
    private void HandleSelectedAction()
    {
-       if (Input.GetMouseButtonDown(0))
+       if (InputManager.Instance.IsMouseButtonDown())
        {
            GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetMouseWorldPosition());
 
