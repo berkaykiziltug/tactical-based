@@ -71,7 +71,7 @@ public class UnitActionSystem : MonoBehaviour
    }
 
    private bool TryHandleUnitSelection(){
-       if (InputManager.Instance.IsMouseButtonDown())
+       if (InputManager.Instance.IsMouseButtonDownThisFrame())
        { 
                //Fire a ray from camera's position towards the mouse position. Simple. Then I store the ray.
                Ray ray = Camera.main.ScreenPointToRay(InputManager.Instance.GetMouseScreenPosition());
@@ -122,7 +122,7 @@ public class UnitActionSystem : MonoBehaviour
 
    private void HandleSelectedAction()
    {
-       if (InputManager.Instance.IsMouseButtonDown())
+       if (InputManager.Instance.IsMouseButtonDownThisFrame())
        {
            GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetMouseWorldPosition());
 
